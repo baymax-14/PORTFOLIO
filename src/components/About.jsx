@@ -10,7 +10,7 @@ export default function About() {
         {/* LEFT: Video or Image */}
         <div className="flex flex-col items-center">
           <video
-            src="/media/about_video.mp4"
+            src="/media/about.mp4"
             autoPlay
             loop
             muted
