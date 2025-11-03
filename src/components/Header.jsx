@@ -17,7 +17,7 @@ export default function Header() {
         ]}
         activeHref="#home"
         baseColor="#000000"          // Cyan glow base
-        pillColor="#0A0A0A"          // Background inside each pill
+        pillColor="#ffffff"          // Background inside each pill
         hoveredPillTextColor="#FFFFFF"
         pillTextColor="#FFFFFF"
         className="mt-4"
