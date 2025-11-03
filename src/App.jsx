@@ -34,14 +34,14 @@ export default function App() {
           <div className="max-w-6xl mx-auto px-4">
             <LogoLoop
               logos={[
-                { src: "/logos/html5.svg", alt: "HTML5" , href: "https://www.geeksforgeeks.org/html/html5-introduction/" },
-                { src: "/logos/css3.svg", alt: "CSS3" , href:"https://developer.mozilla.org/en-US/docs/Web/CSS}"},
-                { src: "/logos/javascript.svg", alt: "JavaScript" , href:"https://developer.mozilla.org/en-US/docs/Web/JavaScript" },
-                { src: "/logos/react.svg", alt: "React", href: "https://react.dev"},
-                { src: "/logos/nodejs.svg", alt: "Node.js" , href:"https://nodejs.org/en" },
-                { src: "/logos/python.svg", alt: "Python" , href:"https://www.python.org/" },
-                { src: "/logos/tailwindcss.svg", alt: "Tailwind CSS" , href:"https://tailwindcss.com/"},
-                { src: "/logos/github.svg", alt: "GitHub" , href:"https://github.com/"},
+                { src: "/assets/tech/html5.svg", alt: "HTML5" , href: "https://www.geeksforgeeks.org/html/html5-introduction/" },
+                { src: "/assets/tech/css3.svg", alt: "CSS3" , href:"https://developer.mozilla.org/en-US/docs/Web/CSS}"},
+                { src: "/assets/tech/javascript.svg", alt: "JavaScript" , href:"https://developer.mozilla.org/en-US/docs/Web/JavaScript" },
+                { src: "/assets/tech/react.svg", alt: "React", href: "https://react.dev"},
+                { src: "/assets/tech/nodejs.svg", alt: "Node.js" , href:"https://nodejs.org/en" },
+                { src: "/assets/tech/python.svg", alt: "Python" , href:"https://www.python.org/" },
+                { src: "/assets/tech/tailwindcss.svg", alt: "Tailwind CSS" , href:"https://tailwindcss.com/"},
+                { src: "/assets/tech/github.svg", alt: "GitHub" , href:"https://github.com/"},
               ]}
               speed={90}
               direction="left"
