@@ -1,0 +1,50 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* === Scrollbar Custom Theme === */
+body {
+  --sb-track-color: #0a0a0a; /* deep black background */
+  --sb-thumb-color: #00e5ff; /* cyan accent like your highlights */
+  --sb-size: 8px;
+}
+
+body::-webkit-scrollbar {
+  width: var(--sb-size);
+}
+
+body::-webkit-scrollbar-track {
+  background: var(--sb-track-color);
+  border-radius: 12px;
+}
+
+body::-webkit-scrollbar-thumb {
+  background: var(--sb-thumb-color);
+  border-radius: 12px;
+  border: 2px solid #0f0f0f; /* subtle border for contrast */
+  transition: background 0.3s ease;
+}
+
+body::-webkit-scrollbar-thumb:hover {
+  background: #22d3ee; /* lighter cyan glow on hover */
+}
+
+@supports not selector(::-webkit-scrollbar) {
+  body {
+    scrollbar-color: var(--sb-thumb-color) var(--sb-track-color);
+  }
+}
+
+@font-face {
+  font-family: 'Mangolaine';
+  src: url('/fonts/Mangolaine.ttf') format('truetype');
+  font-weight: normal;
+  font-style: normal;
+}
+
+.mangolaine {
+  font-family: 'Mangolaine', sans-serif;
+  letter-spacing: 1px;
+}
+
+
