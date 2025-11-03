@@ -7,7 +7,6 @@ import Contact from "./components/Contact.jsx";
 import Footer from "./components/Footer.jsx";
 import ScrollProgress from "./components/ScrollProgress.jsx";
 import LogoLoop from "./components/LogoLoop.jsx"; 
-import { href } from "react-router-dom";
 
 export default function App() {
   return (
