@@ -6,9 +6,53 @@ import Projects from "./components/Projects.jsx";
 import Contact from "./components/Contact.jsx";
 import Footer from "./components/Footer.jsx";
 import ScrollProgress from "./components/ScrollProgress.jsx";
-import LogoLoop from "./components/LogoLoop.jsx"; 
+import LogoLoop from "./components/LogoLoop.jsx";
 
 export default function App() {
+  // ✅ Define your logos array outside JSX
+  const logos = [
+    {
+      src: "/tech/html5.svg",
+      alt: "HTML5",
+      href: "https://www.geeksforgeeks.org/html/html5-introduction/",
+    },
+    {
+      src: "/tech/css3.svg",
+      alt: "CSS3",
+      href: "https://developer.mozilla.org/en-US/docs/Web/CSS",
+    },
+    {
+      src: "/tech/javascript.svg",
+      alt: "JavaScript",
+      href: "https://developer.mozilla.org/en-US/docs/Web/JavaScript",
+    },
+    {
+      src: "/tech/react.svg",
+      alt: "React",
+      href: "https://react.dev",
+    },
+    {
+      src: "/tech/nodejs.svg",
+      alt: "Node.js",
+      href: "https://nodejs.org/en",
+    },
+    {
+      src: "/tech/python.svg",
+      alt: "Python",
+      href: "https://www.python.org/",
+    },
+    {
+      src: "/tech/tailwindcss.svg",
+      alt: "Tailwind CSS",
+      href: "https://tailwindcss.com/",
+    },
+    {
+      src: "/tech/github.svg",
+      alt: "GitHub",
+      href: "https://github.com/",
+    },
+  ];
+
   return (
     <div className="min-h-screen bg-black text-gray-100">
       {/* Progress bar (fixed at very top) */}
@@ -32,21 +76,12 @@ export default function App() {
         <section className="py-10 md:py-12 bg-black">
           <div className="max-w-6xl mx-auto px-4">
             <LogoLoop
-              const logos={[
-                { src: "/tech/html5.svg", alt: "HTML5" , href: "https://www.geeksforgeeks.org/html/html5-introduction/" },
-                { src: "/tech/css3.svg", alt: "CSS3" , href:"https://developer.mozilla.org/en-US/docs/Web/CSS}"},
-                { src: "/tech/javascript.svg", alt: "JavaScript" , href:"https://developer.mozilla.org/en-US/docs/Web/JavaScript" },
-                { src: "/tech/react.svg", alt: "React", href: "https://react.dev"},
-                { src: "/tech/nodejs.svg", alt: "Node.js" , href:"https://nodejs.org/en" },
-                { src: "/tech/python.svg", alt: "Python" , href:"https://www.python.org/" },
-                { src: "/tech/tailwindcss.svg", alt: "Tailwind CSS" , href:"https://tailwindcss.com/"},
-                { src: "/tech/github.svg", alt: "GitHub" , href:"https://github.com/"},
-              ]}
+              logos={logos}       // ✅ Correct prop usage
               speed={90}
               direction="left"
               width="100%"
-              logoHeight={42}   // tweak size here
-              gap={48}          // spacing between logos
+              logoHeight={42}      // tweak size here
+              gap={48}             // spacing between logos
               pauseOnHover={true}
               fadeOut={true}
               fadeOutColor="#000"
