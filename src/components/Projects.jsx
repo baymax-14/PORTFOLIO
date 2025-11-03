@@ -5,7 +5,7 @@ import { FaExternalLinkAlt, FaGithub } from "react-icons/fa";
 const PROJECTS = [
   {
     title: "Portfolio Website",
-    src: "/public/images/portfolio.png",
+    src: "/images/portfolio.png",
     description: "Personal project",
     details:
       "A modern, responsive portfolio built with React and Tailwind CSS to showcase my skills, projects, and experience. Designed with a clean aesthetic, smooth animations, and a functional contact form powered by Formspree.",
@@ -15,7 +15,7 @@ const PROJECTS = [
   },
   {
     title: "Movie Finder",
-    src: "/public/images/movie.png",
+    src: "/images/movie.png",
     description: "Web App",
     details:
       "A sleek AngularJS-based movie discovery web app powered by TMDB API, where users can explore trending, popular, and filtered movies or TV shows. Features include search, detailed view pages, smooth animations, and a personalized watchlist — all wrapped in a modern Netflix-inspired UI.",
