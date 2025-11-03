@@ -33,15 +33,15 @@ export default function App() {
         <section className="py-10 md:py-12 bg-black">
           <div className="max-w-6xl mx-auto px-4">
             <LogoLoop
-              logos={[
-                { src: "src/assets/tech/html5.svg", alt: "HTML5" , href: "https://www.geeksforgeeks.org/html/html5-introduction/" },
-                { src: "src/assets/tech/css3.svg", alt: "CSS3" , href:"https://developer.mozilla.org/en-US/docs/Web/CSS}"},
-                { src: "src/assets/tech/javascript.svg", alt: "JavaScript" , href:"https://developer.mozilla.org/en-US/docs/Web/JavaScript" },
-                { src: "src/assets/tech/react.svg", alt: "React", href: "https://react.dev"},
-                { src: "src/assets/tech/nodejs.svg", alt: "Node.js" , href:"https://nodejs.org/en" },
-                { src: "src/assets/tech/python.svg", alt: "Python" , href:"https://www.python.org/" },
-                { src: "src/assets/tech/tailwindcss.svg", alt: "Tailwind CSS" , href:"https://tailwindcss.com/"},
-                { src: "src/assets/tech/github.svg", alt: "GitHub" , href:"https://github.com/"},
+              const logos={[
+                { src: "/tech/html5.svg", alt: "HTML5" , href: "https://www.geeksforgeeks.org/html/html5-introduction/" },
+                { src: "/tech/css3.svg", alt: "CSS3" , href:"https://developer.mozilla.org/en-US/docs/Web/CSS}"},
+                { src: "/tech/javascript.svg", alt: "JavaScript" , href:"https://developer.mozilla.org/en-US/docs/Web/JavaScript" },
+                { src: "/tech/react.svg", alt: "React", href: "https://react.dev"},
+                { src: "/tech/nodejs.svg", alt: "Node.js" , href:"https://nodejs.org/en" },
+                { src: "/tech/python.svg", alt: "Python" , href:"https://www.python.org/" },
+                { src: "/tech/tailwindcss.svg", alt: "Tailwind CSS" , href:"https://tailwindcss.com/"},
+                { src: "/tech/github.svg", alt: "GitHub" , href:"https://github.com/"},
               ]}
               speed={90}
               direction="left"
