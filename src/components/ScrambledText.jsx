@@ -72,7 +72,7 @@ const ScrambledText = ({
       ref={rootRef}
       className={[
         // Keep your sizing & color
-        "text-gray-300 leading-relaxed text-base md:text-lg",
+        "font-mono text-gray-300 leading-relaxed text-base md:text-lg",
         // Fix word breaking issues
         "break-words whitespace-normal",
         "[word-break:normal] hyphens-auto",
