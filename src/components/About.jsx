@@ -30,26 +30,42 @@ export default function About() {
         {/* RIGHT: Scrambled Text */}
         <div className="md:col-span-2 flex items-center">
           <div className="space-y-6 text-gray-300 leading-relaxed text-base md:text-lg max-w-2xl">
-            <ScrambledText radius={100} duration={1.2} speed={0.5} scrambleChars=".:">
+            <ScrambledText
+              radius={100}
+              duration={1.2}
+              speed={0.5}
+              scrambleChars=".:"
+            >
               {" "}
-              Hey there! I’m a web developer who loves bringing ideas to life
-              through clean design and smooth functionality. For the past few
-              years, I’ve been building responsive, modern websites that don’t
-              just work well — they look good too.{" "}
+              Hey, I’m Anand Rathod, a passionate Front-End Developer who loves
+              creating clean, modern, and responsive web experiences. I enjoy
+              transforming ideas into interactive websites that not only work
+              smoothly but also look great on every screen.{" "}
             </ScrambledText>{" "}
-            <ScrambledText radius={100} duration={1.2} speed={0.5} scrambleChars=".:">
+            <ScrambledText
+              radius={100}
+              duration={1.2}
+              speed={0.5}
+              scrambleChars=".:"
+            >
               {" "}
-              I mainly work with React and other JavaScript frameworks, but I’m
-              always learning something new. Whether it’s front-end design or
-              back-end logic, I enjoy solving problems and turning creative
-              concepts into working digital experiences.{" "}
+              I work mainly with HTML, CSS, JavaScript, and React.js, and I’m
+              always exploring new libraries like Framer Motion and ShadCN UI to
+              make my projects more dynamic and engaging. My goal is to blend
+              good design with solid functionality — because I believe a website
+              should feel as good as it looks.{" "}
             </ScrambledText>{" "}
-            <ScrambledText radius={100} duration={1.2} speed={0.5} scrambleChars=".:">
+            <ScrambledText
+              radius={100}
+              duration={1.2}
+              speed={0.5}
+              scrambleChars=".:"
+            >
               {" "}
               When I’m not deep in code, you’ll probably find me exploring new
               tech tools, tweaking designs, scrolling through developer
-              communities or gaming. I’m always up for a challenge and love working on
-              projects that push me to grow as a creator.{" "}
+              communities or gaming. I’m always up for a challenge and love
+              working on projects that push me to grow as a creator.{" "}
             </ScrambledText>
           </div>
         </div>
