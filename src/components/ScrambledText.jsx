@@ -18,11 +18,9 @@ const ScrambledText = ({
   const pRef = useRef(null);
 
   useEffect(() => {
-    // Guard for SSR
     if (typeof window === "undefined") return;
     if (!rootRef.current) return;
 
-    // Target the paragraph only once
     const p = rootRef.current.querySelector("p");
     if (!p) return;
     pRef.current = p;
@@ -71,17 +69,11 @@ const ScrambledText = ({
     <div
       ref={rootRef}
       className={[
-        // Keep your sizing & color
         "font-mono text-gray-300 leading-relaxed text-base md:text-lg",
-        // Fix word breaking issues
-        "break-words whitespace-normal",
-        "[word-break:normal] hyphens-auto",
-        // Optional: remove mono if you don't want the typewriter feel
-        // "font-mono",
+        "break-words whitespace-normal [word-break:normal] hyphens-auto",
         className,
       ].join(" ")}
       style={{
-        // CSS fallbacks for non-Tailwind contexts
         wordBreak: "normal",
         overflowWrap: "break-word",
         hyphens: "auto",
