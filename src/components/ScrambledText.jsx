@@ -15,7 +15,7 @@ const ScrambledText = ({
   children,
 }) => {
   const rootRef = useRef(null);
-  const pRef = useRef(null);
+  const splitRef = useRef(null);
 
   useEffect(() => {
     if (typeof window === "undefined") return;
@@ -23,22 +23,38 @@ const ScrambledText = ({
 
     const p = rootRef.current.querySelector("p");
     if (!p) return;
-    pRef.current = p;
 
+    // IMPORTANT: split into words AND chars
     const split = SplitText.create(p, {
-      type: "chars",
-      charsClass: "inline-block will-change-transform",
+      type: "words,chars",
+      // GSAP will add classes: .word and .char automatically
+      wordsClass: "st-word",
+      charsClass: "st-char",
+    });
+    splitRef.current = split;
+
+    // Make each word non-breaking unit (prevents mid-word wrap)
+    gsap.set(split.words, {
+      display: "inline-block",
+      whiteSpace: "nowrap",
     });
 
+    // Characters remain inline-block so the scramble animates nicely
+    gsap.set(split.chars, {
+      display: "inline-block",
+      willChange: "transform",
+    });
+
+    // Cache original character content for scrambleText
     split.chars.forEach((el) => {
-      gsap.set(el, { attr: { "data-content": el.innerHTML } });
+      gsap.set(el, { attr: { "data-content": el.textContent || "" } });
     });
 
     const handleMove = (e) => {
       split.chars.forEach((c) => {
-        const { left, width, top, height } = c.getBoundingClientRect();
-        const dx = e.clientX - (left + width / 2);
-        const dy = e.clientY - (top + height / 2);
+        const rect = c.getBoundingClientRect();
+        const dx = e.clientX - (rect.left + rect.width / 2);
+        const dy = e.clientY - (rect.top + rect.height / 2);
         const dist = Math.hypot(dx, dy);
 
         if (dist < radius) {
@@ -46,7 +62,7 @@ const ScrambledText = ({
             overwrite: true,
             duration: duration * (1 - dist / radius),
             scrambleText: {
-              text: c.dataset.content || "",
+              text: c.getAttribute("data-content") || "",
               chars: scrambleChars,
               speed,
             },
@@ -61,6 +77,7 @@ const ScrambledText = ({
 
     return () => {
       el.removeEventListener("pointermove", handleMove);
+      // Revert DOM back to the original paragraph
       split.revert();
     };
   }, [radius, duration, speed, scrambleChars]);
@@ -70,13 +87,14 @@ const ScrambledText = ({
       ref={rootRef}
       className={[
         "font-mono text-gray-300 leading-relaxed text-base md:text-lg",
-        "break-words whitespace-normal [word-break:normal] hyphens-auto",
+        // allow normal wrapping between words only (not inside words)
+        "whitespace-normal break-words [word-break:normal] hyphens-none",
         className,
       ].join(" ")}
       style={{
         wordBreak: "normal",
         overflowWrap: "break-word",
-        hyphens: "auto",
+        hyphens: "none",
         ...style,
       }}
     >
