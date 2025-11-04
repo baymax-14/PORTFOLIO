@@ -14,7 +14,7 @@ export default function App() {
     {
       src: "/tech/html5.svg",
       alt: "HTML5",
-      href: "https://www.geeksforgeeks.org/html/html5-introduction/",
+      href: "https://developer.mozilla.org/en-US/docs/Web/HTML",
     },
     {
       src: "/tech/css3.svg",

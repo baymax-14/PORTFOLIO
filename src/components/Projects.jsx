@@ -10,8 +10,7 @@ const PROJECTS = [
     details:
       "A modern, responsive portfolio built with React and Tailwind CSS to showcase my skills, projects, and experience. Designed with a clean aesthetic, smooth animations, and a functional contact form powered by Formspree.",
     tech: ["React", "Tailwind CSS", "Formspree"],
-    demo: "https://your-demo.com",
-    code: "https://github.com/baymax-14/portfolio",
+    demo: "https://portfolio-anandrathod.vercel.app/",
   },
   {
     title: "Movie Finder",
