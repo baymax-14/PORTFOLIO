@@ -3,11 +3,25 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Portfolio – Anand Rathod</title>
-    <script type="module" crossorigin src="/assets/index-5onWVHRz.js"></script>
-    <link rel="stylesheet" crossorigin href="/assets/index-Cb8rHYwD.css">
+    <meta name="theme-color" content="#fcf9f8" />
+    <meta name="description" content="Anand Rathod is an Information Technology student and aspiring Software Development Engineer building full-stack applications and machine-learning tools in Amravati, India." />
+    <title>Anand Rathod — Software Development Engineer</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link href="https://fonts.googleapis.com/css2?family=Caveat:wght@500;600;700&family=DM+Sans:ital,opsz,wght@0,9..40,400..700;1,9..40,400..700&family=Playfair+Display:ital,wght@0,600..800;1,600..800&display=swap" rel="stylesheet" />
+    <script>
+      try {
+        const savedTheme = localStorage.getItem("portfolio-theme");
+        const preferredTheme = window.matchMedia("(prefers-color-scheme: dark)").matches ? "dark" : "light";
+        document.documentElement.dataset.theme = savedTheme || preferredTheme;
+      } catch {
+        document.documentElement.dataset.theme = "light";
+      }
+    </script>
+    <script type="module" crossorigin src="/assets/index-D0h4JU_V.js"></script>
+    <link rel="stylesheet" crossorigin href="/assets/index-QwDHjQ8v.css">
   </head>
   <body>
-    <div id="root"></div>
+    <div id="root"></div>
   </body>
 </html>

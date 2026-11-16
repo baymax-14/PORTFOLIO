@@ -1,9 +1,4 @@
 import { useEffect, useRef } from "react";
-import { gsap } from "gsap";
-import { SplitText } from "gsap/SplitText";
-import { ScrambleTextPlugin } from "gsap/ScrambleTextPlugin";
-
-gsap.registerPlugin(SplitText, ScrambleTextPlugin);
 
 const ScrambledText = ({
   radius = 100,
@@ -15,59 +10,71 @@ const ScrambledText = ({
   children,
 }) => {
   const rootRef = useRef(null);
-  const splitRef = useRef(null);
+  const activeTimers = useRef(new Map());
 
   useEffect(() => {
-    if (typeof window === "undefined") return;
-    if (!rootRef.current) return;
+    if (typeof window === "undefined" || !rootRef.current) return;
 
     const p = rootRef.current.querySelector("p");
     if (!p) return;
 
-    // IMPORTANT: split into words AND chars
-    const split = SplitText.create(p, {
-      type: "words,chars",
-      // GSAP will add classes: .word and .char automatically
-      wordsClass: "st-word",
-      charsClass: "st-char",
-    });
-    splitRef.current = split;
+    const originalText = p.textContent || "";
+    // Wrap words and characters
+    const words = originalText.split(/(\s+)/);
+    p.innerHTML = "";
 
-    // Make each word non-breaking unit (prevents mid-word wrap)
-    gsap.set(split.words, {
-      display: "inline-block",
-      whiteSpace: "nowrap",
+    words.forEach((part) => {
+      if (/^\s+$/.test(part)) {
+        p.appendChild(document.createTextNode(part));
+      } else {
+        const wordSpan = document.createElement("span");
+        wordSpan.className = "st-word inline-block whitespace-nowrap";
+        for (const char of part) {
+          const charSpan = document.createElement("span");
+          charSpan.className = "st-char inline-block";
+          charSpan.textContent = char;
+          charSpan.setAttribute("data-content", char);
+          wordSpan.appendChild(charSpan);
+        }
+        p.appendChild(wordSpan);
+      }
     });
 
-    // Characters remain inline-block so the scramble animates nicely
-    gsap.set(split.chars, {
-      display: "inline-block",
-      willChange: "transform",
-    });
-
-    // Cache original character content for scrambleText
-    split.chars.forEach((el) => {
-      gsap.set(el, { attr: { "data-content": el.textContent || "" } });
-    });
+    const chars = Array.from(p.querySelectorAll(".st-char"));
+    const timers = activeTimers.current;
 
     const handleMove = (e) => {
-      split.chars.forEach((c) => {
+      chars.forEach((c) => {
         const rect = c.getBoundingClientRect();
         const dx = e.clientX - (rect.left + rect.width / 2);
         const dy = e.clientY - (rect.top + rect.height / 2);
         const dist = Math.hypot(dx, dy);
 
         if (dist < radius) {
-          gsap.to(c, {
-            overwrite: true,
-            duration: duration * (1 - dist / radius),
-            scrambleText: {
-              text: c.getAttribute("data-content") || "",
-              chars: scrambleChars,
-              speed,
-            },
-            ease: "none",
-          });
+          const target = c.getAttribute("data-content") || "";
+          if (timers.has(c)) {
+            clearInterval(timers.get(c));
+            timers.delete(c);
+          }
+
+          const animDuration = Math.max(150, duration * 1000 * (1 - dist / radius));
+          const intervalTime = Math.max(25, 60 / speed);
+          const startTime = Date.now();
+
+          const intervalId = setInterval(() => {
+            const elapsed = Date.now() - startTime;
+            if (elapsed >= animDuration) {
+              c.textContent = target;
+              clearInterval(intervalId);
+              timers.delete(c);
+            } else {
+              const randChar =
+                scrambleChars[Math.floor(Math.random() * scrambleChars.length)] || ".";
+              c.textContent = randChar;
+            }
+          }, intervalTime);
+
+          timers.set(c, intervalId);
         }
       });
     };
@@ -77,17 +84,17 @@ const ScrambledText = ({
 
     return () => {
       el.removeEventListener("pointermove", handleMove);
-      // Revert DOM back to the original paragraph
-      split.revert();
+      timers.forEach((id) => clearInterval(id));
+      timers.clear();
+      p.textContent = originalText;
     };
-  }, [radius, duration, speed, scrambleChars]);
+  }, [radius, duration, speed, scrambleChars, children]);
 
   return (
     <div
       ref={rootRef}
       className={[
         "font-mono text-gray-300 leading-relaxed text-base md:text-lg",
-        // allow normal wrapping between words only (not inside words)
         "whitespace-normal break-words [word-break:normal] hyphens-none",
         className,
       ].join(" ")}

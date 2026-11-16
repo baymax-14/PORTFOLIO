@@ -1,134 +1,93 @@
-import { FiCpu } from "react-icons/fi";
-import { TbBrandReact } from "react-icons/tb";
-import { LuPenTool } from "react-icons/lu";
-import Section from "./Section.jsx";
+const skillGroups = [
+  { title: "Languages", skills: ["JavaScript", "Python", "HTML5", "CSS3", "SQL"] },
+  { title: "Backend & APIs", skills: ["Node.js", "Express.js", "Flask", "REST APIs", "JWT", "Nodemailer", "Multer"] },
+  { title: "Frontend", skills: ["React", "Redux Toolkit", "React Router", "Tailwind CSS", "Radix UI", "Vite", "Chart.js", "Recharts", "GSAP", "Framer Motion", "AngularJS"] },
+  { title: "Data & tools", skills: ["MongoDB", "Mongoose", "Git", "GitHub", "Postman", "Cloudinary", "Vercel", "Formspree", "Firebase"] },
+  { title: "Machine learning", skills: ["Random Forest", "scikit-learn", "Pandas", "NumPy", "Matplotlib", "PyTorch"] },
+];
 
-const expertise = [
+const highlights = [
   {
-    icon: <FiCpu className="size-7 text-cyan-400" />,
-    hashtag: "#backend-oop",
-    kicker: "Software",
-    title: "Development",
-    accent: "after:bg-pink-400",
-    points: [
-      "Experienced in both functional and OOP.",
-      "Python, Java, JavaScript.",
-    ],
+    title: "Full-stack product work",
+    detail: "MERN applications with authentication, role-based access, job workflows and responsive interfaces.",
   },
   {
-    icon: <TbBrandReact className="size-7 text-cyan-400" />,
-    hashtag: "#frontend-uiux",
-    kicker: "Frontend Dev",
-    title: "React, NextJS",
-    accent: "after:bg-cyan-400",
-    points: [
-      "Passionate about UI/UX and clean code.",
-      "HTML, CSS, JS, React & Next.js frameworks.",
-    ],
+    title: "APIs & platform features",
+    detail: "REST endpoints, resume uploads, email alerts, analytics dashboards and persistent user histories.",
   },
   {
-    icon: <LuPenTool className="size-7 text-cyan-400" />, // you can use LuPenTool or FiEdit3
-    hashtag: "#ui-ux-design",
-    kicker: "UI/UX",
-    title: "Design",
-    accent: "after:bg-purple-400",
-    points: [
-      "Beginner in UI/UX design with a growing interest in creating visually appealing and user-friendly interfaces.",
-      "Exploring tools like Figma and Framer to improve design thinking and prototyping skills.",
-    ],
+    title: "Machine learning",
+    detail: "Python and Flask tools that apply Random Forest models and explain results through charts and confidence scores.",
+  },
+];
+
+const activities = [
+  {
+    title: "AI & ML Program",
+    organization: "IIT Guwahati × Masai School",
+    detail: "Credit-linked program covering machine learning, deep learning, NLP and computer vision.",
+  },
+  {
+    title: "Adobe India Hackathon 2025",
+    organization: "Participant",
+    detail: "Worked on AI-powered PDF and document-intelligence solutions using Adobe technologies.",
+  },
+  {
+    title: "ISNEE Go-Kart Design Competition",
+    organization: "First-year team member",
+    detail: "Designed, built and raced a go-kart as part of the team.",
   },
 ];
 
 export default function Expertise() {
   return (
-    <Section id="expertise" title="My Expertise">
-      {/* grid */}
-      <div className="grid gap-6 md:grid-cols-3">
-        {expertise.map((card, i) => (
-          <article
-            key={i}
-            className="
-              group relative overflow-hidden rounded-2xl border border-white/10 bg-white/5
-              backdrop-blur-sm px-6 py-7
-              transition-shadow duration-300
-              hover:shadow-[0_0_40px_rgba(34,211,238,.15)]
-            "
-          >
-            {/* subtle animated border glow */}
-            <div
-              className="
-                pointer-events-none absolute inset-0 rounded-2xl
-                opacity-0 group-hover:opacity-100 transition-opacity duration-300
-                [background:radial-gradient(600px_200px_at_var(--x,_50%)_0%,rgba(34,211,238,.08),transparent_60%)]
-              "
-            />
+    <section id="expertise" className="folio-section expertise-section">
+      <div className="section-heading">
+        <span>Skills & education</span>
+        <h2>Built across<br />software and data.</h2>
+      </div>
 
-            {/* hashtag */}
-            <h3 className="text-xs font-mono text-gray-500 mb-3 tracking-tight">
-              {card.hashtag}
-            </h3>
-
-            {/* header */}
-            <div className="flex items-center gap-3">
-              <div className="inline-flex size-11 items-center justify-center rounded-xl bg-black/40 ring-1 ring-white/10">
-                {card.icon}
+      <div className="expertise-layout">
+        <p className="expertise-lead">I work across the stack, from secure APIs and product interfaces to machine-learning insights.</p>
+        <div className="resume-skill-groups" aria-label="Technical skills">
+          {skillGroups.map((group) => (
+            <div className="resume-skill-group" key={group.title}>
+              <h3>{group.title}</h3>
+              <div className="skill-list">
+                {group.skills.map((skill) => <span key={skill}>{skill}</span>)}
               </div>
-
-              <h3 className="text-xl font-semibold leading-tight">
-                <span
-                  className={`relative inline-block after:absolute after:left-0 after:bottom-0 after:h-[3px] after:w-full after:rounded-full ${card.accent}`}
-                >
-                  {card.kicker}
-                </span>
-                <span className="block text-white/90">{card.title}</span>
-              </h3>
             </div>
+          ))}
+        </div>
+      </div>
 
-            {/* body */}
-            <div className="mt-5 pl-4 border-l-2 border-white/10 relative">
-              {/* opening <h3> tag */}
-              <span className="text-xs font-mono text-gray-500 absolute -top-4 left-0 opacity-70 select-none">
-                &lt;h3&gt;
-              </span>
-
-              <ul className="space-y-2 text-gray-300 mt-2">
-                {card.points.map((p, idx) => (
-                  <li key={idx} className="leading-relaxed">
-                    {p}
-                  </li>
-                ))}
-              </ul>
-
-              {/* closing </h3> tag */}
-              <span className="text-xs font-mono text-gray-500 mt-3 block opacity-70 select-none">
-                &lt;/h3&gt;
-              </span>
-            </div>
-
-            {/* mouse position glow */}
-            <MouseGlow />
-          </article>
+      <div className="expertise-notes">
+        {highlights.map((item) => (
+          <article key={item.title}><h3>{item.title}</h3><p>{item.detail}</p></article>
         ))}
       </div>
-    </Section>
-  );
-}
 
-/**
- * Tracks mouse position over the card and writes CSS var --x for the radial glow
- */
-function MouseGlow() {
-  return (
-    <div
-      onMouseMove={(e) => {
-        const target = e.currentTarget.parentElement; // the <article>
-        if (!target) return;
-        const rect = target.getBoundingClientRect();
-        const x = ((e.clientX - rect.left) / rect.width) * 100;
-        target.style.setProperty("--x", `${x}%`);
-      }}
-      className="absolute inset-0"
-      aria-hidden
-    />
+      <div className="resume-background">
+        <div className="resume-education">
+          <span className="resume-kicker">Education</span>
+          <article>
+            <div><h3>B.Tech in Information Technology</h3><p>Prof. Ram Meghe Institute of Technology and Research · Amravati</p></div>
+            <span>Expected 2027</span>
+          </article>
+          <article>
+            <div><h3>Higher Secondary Certificate · PCM</h3><p>Independent Junior College Rural Institute · Amravati</p></div>
+            <span>2021–2023</span>
+          </article>
+        </div>
+        <div className="resume-activities">
+          <span className="resume-kicker">Programs & competitions</span>
+          {activities.map((item) => (
+            <article key={item.title}>
+              <h3>{item.title}</h3><span>{item.organization}</span><p>{item.detail}</p>
+            </article>
+          ))}
+        </div>
+      </div>
+    </section>
   );
 }

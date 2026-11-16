@@ -1,80 +1,97 @@
-import Section from "./Section.jsx";
-import { ExpandableCard } from "./ExpandableCard";
 import { FaExternalLinkAlt, FaGithub } from "react-icons/fa";
+import AnimatedContent from "./ui/AnimatedContent.jsx";
 
-const PROJECTS = [
+const projects = [
   {
-    title: "Portfolio Website",
-    src: "/images/portfolio.png",
-    description: "Personal project",
-    details:
-      "A modern, responsive portfolio built with React and Tailwind CSS to showcase my skills, projects, and experience. Designed with a clean aesthetic, smooth animations, and a functional contact form powered by Formspree.",
-    tech: ["React", "Tailwind CSS", "Formspree"],
-    demo: "https://portfolio-anandrathod.vercel.app/",
+    title: "HireHub",
+    type: "AI-powered job portal & applicant tracking system",
+    visual: "hirehub",
+    details: "A recruitment platform connecting job seekers and recruiters, with JWT authentication, role-based workspaces, job tracking and applicant pipelines.",
+    points: [
+      "Parses candidate resumes and scores skill alignment on a 100-point rubric, then sorts applicants into five match tiers with feedback.",
+      "Supports bulk screening with adjustable cutoffs and automated email alerts, with an HTTPS API fallback.",
+      "Includes persistent recruiter workflows and Recharts dashboards for hiring KPIs.",
+    ],
+    tech: ["React 19", "Redux Toolkit", "Node.js", "Express", "MongoDB", "JWT", "Tailwind CSS", "Cloudinary", "Nodemailer", "REST APIs"],
   },
   {
-    title: "Movie Finder",
-    src: "/images/movie.png",
-    description: "Web App",
-    details:
-      "A sleek AngularJS-based movie discovery web app powered by TMDB API, where users can explore trending, popular, and filtered movies or TV shows. Features include search, detailed view pages, smooth animations, and a personalized watchlist — all wrapped in a modern Netflix-inspired UI.",
-    tech: ["React", "TMDb", "Angular"],
-    demo: "https://baymax-14.github.io/movie-app/#!/search",
-    code: "https://github.com/baymax-14/movie-app",
+    title: "EduPredict",
+    type: "Student performance prediction dashboard",
+    visual: "edupredict",
+    details: "A full-stack application with a React interface and Python/Flask backend that predicts academic performance using a Random Forest model.",
+    points: [
+      "Returns real-time predictions with confidence scores.",
+      "Shows feature-importance insights in interactive Chart.js visualizations.",
+      "Adds role-based access and a prediction history that users can save and delete.",
+    ],
+    tech: ["React 19", "Vite 7", "Tailwind CSS", "Chart.js", "Python", "Flask", "Random Forest"],
+  },
+  {
+    title: "Portfolio Website",
+    type: "Personal site",
+    visual: "portfolio",
+    details: "A responsive, mobile-first portfolio built with React and Tailwind CSS, with GSAP scroll animations, page transitions and a Formspree-powered contact form.",
+    points: ["Deployed on Vercel."],
+    tech: ["React", "JavaScript", "Tailwind CSS", "GSAP", "Framer Motion", "Formspree", "Vercel"],
+    demo: "https://portfolio-anandrathod.vercel.app/",
   },
 ];
 
+function ProjectArtwork({ type }) {
+  if (type === "hirehub") {
+    return (
+      <div className="project-artwork artwork-hirehub" role="img" aria-label="HireHub workflow diagram: parse resumes, score role fit, and manage applicants">
+        <div className="artwork-topline"><span>HIREHUB</span><span>Recruitment workflow</span></div>
+        <div className="artwork-heading"><small>APPLICANT TRACKING SYSTEM</small><strong>From resume to shortlist.</strong></div>
+        <div className="workflow-steps"><div><b>01</b><strong>Parse resumes</strong><span>PDF · skill extraction</span></div><i>→</i><div><b>02</b><strong>Score role fit</strong><span>100-point rubric</span></div><i>→</i><div><b>03</b><strong>Move applicants</strong><span>Recruiter pipeline</span></div></div>
+        <div className="artwork-footer"><span>ROLE-BASED WORKSPACES</span><span>RECRUITER VIEW ↗</span></div>
+      </div>
+    );
+  }
+  if (type === "edupredict") {
+    return (
+      <div className="project-artwork artwork-edupredict" role="img" aria-label="EduPredict model flow: student data, Random Forest prediction, confidence score, and feature importance">
+        <div className="artwork-topline"><span>EDUPREDICT</span><span>Model insights</span></div>
+        <div className="artwork-heading"><small>STUDENT PERFORMANCE</small><strong>Make predictions easier to read.</strong></div>
+        <div className="prediction-flow"><div><small>INPUT</small><strong>Student data</strong></div><i>→</i><div className="model-node"><small>MODEL</small><strong>Random Forest</strong></div><i>→</i><div><small>OUTPUT</small><strong>Prediction + confidence</strong></div></div>
+        <div className="feature-strip"><span>FEATURE IMPORTANCE</span><div><i/><i/><i/><i/><i/></div><b>Chart.js visualization</b></div>
+        <div className="artwork-footer"><span>PYTHON · FLASK · REACT</span><span>HISTORY & INSIGHTS ↗</span></div>
+      </div>
+    );
+  }
+  return (
+    <div className="project-artwork artwork-portfolio" role="img" aria-label="Portfolio website concept showing the work, skills, and contact sections">
+      <div className="artwork-topline"><span>ANAND RATHOD</span><span>Personal portfolio</span></div>
+      <div className="portfolio-art-title">Thoughtful software,<br /><em>built for people.</em></div>
+      <div className="portfolio-art-links"><span>Selected work <b>↗</b></span><span>Skills <b>↗</b></span><span>Contact <b>↗</b></span></div>
+      <div className="artwork-footer"><span>REACT · GSAP · FRAMER MOTION</span><span>VERCEL ↗</span></div>
+    </div>
+  );
+}
+
 export default function Projects() {
   return (
-    <Section id="projects" title="Projects">
-      <div className="grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
-        {PROJECTS.map((p) => (
-          <ExpandableCard
-            key={p.title}
-            title={p.title}
-            src={p.src}
-            description={p.description}
-            className="bg-[#0a0a0a]"
-            classNameExpanded="bg-[#0a0a0a]"
-          >
-            <p>{p.details}</p>
-
-            <div className="flex flex-wrap gap-2 mt-2">
-              {p.tech.map((t) => (
-                <span
-                  key={t}
-                  className="px-3 py-1 rounded-full bg-cyan-500/10 text-cyan-400 text-xs border border-cyan-500/20"
-                >
-                  {t}
-                </span>
-              ))}
+    <section id="projects" className="folio-section projects-section">
+      <div className="section-heading projects-heading"><span>Selected work</span><h2>Software with purpose.</h2><p>Full-stack systems, applied machine learning and the site that brings them together.</p></div>
+      <AnimatedContent className="project-list" distance={100} direction="vertical" duration={0.8} ease="power3.out" blur={0} stagger={0.08} threshold={0.1}>
+        {projects.map((project, index) => (
+          <article className="project-row" key={project.title}>
+            <div className="project-image">
+              <ProjectArtwork type={project.visual} />
+              {project.demo && <a className="project-image-link" href={project.demo} target="_blank" rel="noreferrer noopener" aria-label={`Visit ${project.title}`}>View project ↗</a>}
             </div>
-
-            <div className="flex gap-3 mt-6">
-              {p.demo && (
-                <a
-                  href={p.demo}
-                  target="_blank"
-                  rel="noreferrer"
-                  className="inline-flex items-center gap-2 px-4 py-2 bg-cyan-500 text-black rounded-lg font-semibold hover:bg-cyan-400 transition"
-                >
-                  <FaExternalLinkAlt /> Demo
-                </a>
-              )}
-              {p.code && (
-                <a
-                  href={p.code}
-                  target="_blank"
-                  rel="noreferrer"
-                  className="inline-flex items-center gap-2 px-4 py-2 border border-gray-700 text-gray-200 rounded-lg hover:border-cyan-400 hover:text-white transition"
-                >
-                  <FaGithub /> Code
-                </a>
-              )}
+            <div className="project-detail">
+              <div className="project-type">{project.type}</div>
+              <h3>{project.title}</h3>
+              <p>{project.details}</p>
+              <ul className="project-points">{project.points.map((point) => <li key={point}>{point}</li>)}</ul>
+              <div className="project-tech">{project.tech.map((tag) => <span key={tag}>{tag}</span>)}</div>
+              {project.demo && <div className="project-links"><a href={project.demo} target="_blank" rel="noreferrer noopener"><FaExternalLinkAlt aria-hidden="true" /> Live demo</a><a href="https://github.com/baymax-14" target="_blank" rel="noreferrer noopener"><FaGithub aria-hidden="true" /> GitHub profile</a></div>}
             </div>
-          </ExpandableCard>
+            <span className="project-number">0{index + 1}</span>
+          </article>
         ))}
-      </div>
-    </Section>
+      </AnimatedContent>
+    </section>
   );
 }

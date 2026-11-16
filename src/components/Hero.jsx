@@ -1,50 +1,17 @@
-import { useEffect, useState } from "react";
-import Container from "./Container.jsx";
-import DarkVeil from "./DarkVeil"; // new OGL version
+import { lazy, Suspense } from "react";
+
+const RobotModel = lazy(() => import("./RobotModel"));
 
 export default function Hero() {
-  const title = "Hi, I'm Anand";
-  const [typed, setTyped] = useState("");
-
-  useEffect(() => {
-    let i = 0;
-    const id = setInterval(() => {
-      setTyped(title.slice(0, i + 1));
-      i++;
-      if (i >= title.length) clearInterval(id);
-    }, 80);
-    return () => clearInterval(id);
-  }, []);
-
-  return (
-    <section
-      id="home"
-      className="rrelative min-h-screen flex flex-col items-center justify-center text-center text-white overflow-hidden bg-black"
-    >
-      {/* 🌌 Dark Veil background */}
-      <DarkVeil className="absolute inset-0 z-0" />
-
-      {/* 🧍‍♂️ Main content */}
-      <div className="relative z-10">
-        <Container>
-          <div className="max-w-3xl mx-auto px-4">
-            <h1 className="text-4xl sm:text-5xl font-extrabold tracking-tight drop-shadow-[0_4px_14px_rgba(0,0,0,.45)]">
-              {typed}
-            </h1>
-            <p className="mt-4 text-lg text-gray-300">
-              A passionate Web Developer creating beautiful, functional, and
-              user-friendly digital experiences with modern technologies and
-              clean code.
-            </p>
-            <a
-              href="#projects"
-              className="inline-flex mt-8 items-center rounded-full bg-gradient-to-r from-teal-500 to-cyan-400 px-6 py-3 font-semibold text-slate-900 shadow hover:from-teal-400 hover:to-cyan-300 transition"
-            >
-              View My Work
-            </a>
-          </div>
-        </Container>
+  return <section id="home" className="hero-section marginalia-hero">
+    <div className="hero-topline"><span>B.Tech IT · Expected 2027</span><a href="/Anand-Rathod-Resume.pdf" target="_blank" rel="noreferrer noopener">Curriculum vitae <span aria-hidden="true">↗</span></a><span>Anand Rathod <i>software developer</i></span></div>
+    <div className="hero-title-wrap"><h1 className="hero-name"><span className="sr-only">Anand Rathod — </span>Portfolio<span>.</span></h1><span className="hand-note name-note" aria-hidden="true">Anand Rathod</span><svg className="scribble scribble-name" viewBox="0 0 330 145" fill="none" aria-hidden="true"><path d="M17 77C30 20 226 4 297 35c55 24 6 86-67 95C124 145 13 126 17 77Z"/><path d="M24 71C46 20 243 12 302 43"/></svg><span className="role-note">Aspiring Software Engineer</span><svg className="scribble scribble-role" viewBox="0 0 270 76" fill="none" aria-hidden="true"><path d="M15 38C32 7 211 1 249 23c27 16-11 42-87 42C86 67 6 61 15 38Z"/><path d="M21 33C62 10 212 8 253 26"/></svg></div>
+    <div className="hero-lower"><div className="hero-intro">I build full-stack software and AI-powered tools for real-world workflows.<a href="#projects" className="text-link">Explore selected work <span>↓</span></a></div>
+      <div className="sculpture-scene robot-scene" aria-label="Interactive robot sculpture">
+        <div className="robot-canvas"><Suspense fallback={<div className="robot-loading" aria-hidden="true" />}><RobotModel /></Suspense></div>
+        <span className="hand-note sculpture-note">say hello!</span>
       </div>
-    </section>
-  );
+    </div>
+    <div className="hero-bottom"><span>Amravati, Maharashtra</span><a href="#about" className="scroll-cue">scroll <span aria-hidden="true">↓</span></a><span>Seeking entry-level SDE roles</span></div>
+  </section>;
 }

@@ -1,8 +1,6 @@
 import { useState } from "react";
-import Section from "./Section.jsx";
-import { FiMail, FiMapPin } from "react-icons/fi";
+import { FiMail, FiMapPin, FiPhone } from "react-icons/fi";
 import { FaGithub, FaLinkedin } from "react-icons/fa";
-import { SiFreelancer } from "react-icons/si";
 
 const FORMSPREE_ENDPOINT = "https://formspree.io/f/xanlzqow"; // <-- paste your endpoint
 
@@ -55,88 +53,58 @@ export default function Contact() {
   };
 
   return (
-    <Section id="contact" title="Contact Me">
-      <div className="grid gap-8 md:grid-cols-2">
+    <section id="contact" className="folio-section contact-section">
+      <div className="section-heading"><span>Get in touch</span><h2>Let’s build<br />something useful.</h2><p>I’m looking for an entry-level software development role and am happy to talk about full-stack or machine-learning projects.</p></div>
+      <div className="contact-layout">
         {/* LEFT INFO */}
-        <div className="relative overflow-hidden rounded-2xl border border-white/10 bg-white/5 backdrop-blur-sm p-7">
+        <div className="contact-info">
           <div className="mb-5">
-            <h3 className="text-xl font-semibold text-white">
-              Let’s build something
-            </h3>
-            <p className="mt-2 text-gray-300">
-              I'm always interested in hearing about new opportunities and
-              exciting projects. Whether you have a question or just want to say
-              hi, feel free to reach out!
-            </p>
+            <h3 className="contact-person-name">Anand Rathod</h3>
+            <p className="contact-person-sub">B.Tech Information Technology · Amravati, Maharashtra</p>
           </div>
 
-          <ul className="space-y-3 text-gray-300">
-            <li className="flex items-center gap-3">
-              <span className="inline-flex size-9 items-center justify-center rounded-lg bg-black/40 ring-1 ring-white/10">
-                <FiMail />
-              </span>
-              <button
-                type="button"
-                onClick={() =>
-                  window.open(
-                    `https://mail.google.com/mail/?view=cm&fs=1&to=${encodeURIComponent(
-                      "anand2005rathod@gmail.com"
-                    )}&su=${encodeURIComponent("Portfolio inquiry")}`,
-                    "_blank",
-                    "noopener,noreferrer"
-                  )
-                }
-                className="hover:text-cyan-300 transition underline underline-offset-4"
-              >
-                anand2005rathod@gmail.com
-              </button>
+          <ul className="contact-details-list">
+            <li>
+              <span className="contact-icon" aria-hidden="true"><FiMail /></span>
+              <a href="mailto:anand2005rathod@gmail.com">anand2005rathod@gmail.com</a>
             </li>
-
-            <li className="flex items-center gap-3">
-              <span className="inline-flex size-9 items-center justify-center rounded-lg bg-black/40 ring-1 ring-white/10">
-                <FiMapPin />
-              </span>
+            <li>
+              <span className="contact-icon" aria-hidden="true"><FiPhone /></span>
+              <a href="tel:+919356030432">+91 93560 30432</a>
+            </li>
+            <li>
+              <span className="contact-icon" aria-hidden="true"><FiMapPin /></span>
               <span>Amravati, Maharashtra, India (IST)</span>
             </li>
           </ul>
 
-          <div className="mt-6">
-            <p className="text-sm font-mono text-gray-500 mb-3">#socials</p>
-            <div className="flex flex-wrap gap-3">
+          <div className="contact-socials-wrap">
+            <p className="contact-socials-label">#socials</p>
+            <div className="contact-socials-links">
               <a
                 href="https://github.com/baymax-14"
                 target="_blank"
-                rel="noreferrer"
-                className="inline-flex items-center gap-2 rounded-lg border border-white/10 bg-black/40 px-3 py-2 text-sm hover:border-cyan-400/50 hover:text-cyan-300 transition"
+                rel="noreferrer noopener"
+                className="contact-social-badge"
               >
-                <FaGithub /> GitHub
+                <FaGithub aria-hidden="true" /> GitHub
               </a>
               <a
-                href="https://www.linkedin.com/in/anand-rathod-b95b14290/"
+                href="https://in.linkedin.com/in/anand-rathod"
                 target="_blank"
-                rel="noreferrer"
-                className="inline-flex items-center gap-2 rounded-lg border border-white/10 bg-black/40 px-3 py-2 text-sm hover:border-cyan-400/50 hover:text-cyan-300 transition"
+                rel="noreferrer noopener"
+                className="contact-social-badge"
               >
-                <FaLinkedin /> LinkedIn
-              </a>
-              <a
-                href="https://www.freelancer.in"
-                target="_blank"
-                rel="noreferrer"
-                className="inline-flex items-center gap-2 rounded-lg border border-white/10 bg-black/40 px-3 py-2 text-sm hover:border-cyan-400/50 hover:text-cyan-300 transition"
-              >
-                <SiFreelancer /> Freelancer
+                <FaLinkedin aria-hidden="true" /> LinkedIn
               </a>
             </div>
           </div>
-
-          <div className="pointer-events-none absolute -top-20 -right-24 h-64 w-64 rounded-full bg-cyan-500/10 blur-3xl" />
         </div>
 
         {/* RIGHT FORM */}
-        <div className="relative overflow-hidden rounded-2xl border border-white/10 bg-white/5 backdrop-blur-sm p-7">
-          <form onSubmit={onSubmit} className="space-y-4">
-            <span className="text-xs font-mono text-gray-500 block -mt-1 mb-1">
+        <div className="contact-form-wrap">
+          <form onSubmit={onSubmit} className="contact-form" noValidate>
+            <span className="text-xs font-mono text-gray-500 block -mt-1 mb-1" aria-hidden="true">
               &lt;form&gt;
             </span>
 
@@ -144,19 +112,20 @@ export default function Contact() {
             <input
               type="text"
               name="_gotcha"
-              className="hidden"
+              className="honeypot"
               tabIndex="-1"
               autoComplete="off"
+              aria-hidden="true"
             />
 
             {/* Optional subject override */}
             <input type="hidden" name="_subject" value="Portfolio contact" />
 
-            <div className="grid gap-4 md:grid-cols-2">
+            <div className="form-fields">
               <div>
                 <label
                   htmlFor="name"
-                  className="block text-sm text-gray-400 mb-1"
+                  className="contact-label"
                 >
                   Name
                 </label>
@@ -166,7 +135,7 @@ export default function Contact() {
                   required
                   value={form.name}
                   onChange={update}
-                  className="w-full rounded-lg border border-white/10 bg-black/40 px-3 py-2 text-gray-100 placeholder-gray-500 outline-none focus:border-cyan-400/60"
+                  className="contact-input"
                   placeholder="Your name"
                   autoComplete="name"
                 />
@@ -174,7 +143,7 @@ export default function Contact() {
               <div>
                 <label
                   htmlFor="email"
-                  className="block text-sm text-gray-400 mb-1"
+                  className="contact-label"
                 >
                   Email
                 </label>
@@ -185,7 +154,7 @@ export default function Contact() {
                   required
                   value={form.email}
                   onChange={update}
-                  className="w-full rounded-lg border border-white/10 bg-black/40 px-3 py-2 text-gray-100 placeholder-gray-500 outline-none focus:border-cyan-400/60"
+                  className="contact-input"
                   placeholder="you@example.com"
                   autoComplete="email"
                 />
@@ -195,27 +164,27 @@ export default function Contact() {
             <div>
               <label
                 htmlFor="message"
-                className="block text-sm text-gray-400 mb-1"
+                className="contact-label"
               >
                 Message
               </label>
               <textarea
                 id="message"
                 name="message"
-                rows={6}
+                rows={5}
                 required
                 value={form.message}
                 onChange={update}
-                className="w-full resize-y rounded-lg border border-white/10 bg-black/40 px-3 py-2 text-gray-100 placeholder-gray-500 outline-none focus:border-cyan-400/60"
-                placeholder="Tell me a little about your project…"
+                className="contact-input contact-textarea"
+                placeholder="Tell me a little about your project or role…"
               />
             </div>
 
-            <div className="flex items-center gap-3 pt-2">
+            <div className="form-actions">
               <button
                 type="submit"
                 disabled={sending}
-                className="inline-flex items-center justify-center rounded-full bg-cyan-600 px-5 py-2.5 font-semibold text-white shadow hover:bg-cyan-500 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-cyan-400 disabled:opacity-60 disabled:cursor-not-allowed"
+                className="contact-submit-btn"
               >
                 {sending ? "Sending…" : "Send Message"}
               </button>
@@ -231,31 +200,31 @@ export default function Contact() {
                     "noopener,noreferrer"
                   )
                 }
-                className="text-sm text-gray-400 hover:text-cyan-300 transition underline-offset-4 hover:underline"
+                className="contact-direct-btn"
               >
-                or email me directly
+                or email directly
               </button>
             </div>
 
-            {status === "success" && (
-              <p className="text-sm text-emerald-400 pt-1">
-                Thanks! Your message was sent ✅
-              </p>
-            )}
-            {status === "error" && (
-              <p className="text-sm text-rose-400 pt-1">
-                Something went wrong. Please try again.
-              </p>
-            )}
+            <div aria-live="polite">
+              {status === "success" && (
+                <p className="contact-status contact-status-success">
+                  Thanks! Your message was sent successfully ✅
+                </p>
+              )}
+              {status === "error" && (
+                <p className="contact-status contact-status-error">
+                  Something went wrong. Please try again or email directly.
+                </p>
+              )}
+            </div>
 
-            <span className="text-xs font-mono text-gray-500 block mt-2">
+            <span className="text-xs font-mono text-gray-500 block mt-2" aria-hidden="true">
               &lt;/form&gt;
             </span>
-
-            <div className="pointer-events-none absolute -bottom-24 -left-24 h-64 w-64 rounded-full bg-teal-500/10 blur-3xl" />
           </form>
         </div>
       </div>
-    </Section>
+    </section>
   );
 }
