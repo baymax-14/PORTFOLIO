@@ -1,50 +1,76 @@
+@import "lenis/dist/lenis.css";
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
 
-/* === Scrollbar Custom Theme === */
-body {
-  --sb-track-color: #0a0a0a; /* deep black background */
-  --sb-thumb-color: #00e5ff; /* cyan accent like your highlights */
-  --sb-size: 8px;
-}
+@layer base {
+  html {
+    -webkit-text-size-adjust: 100%;
+  }
 
-body::-webkit-scrollbar {
-  width: var(--sb-size);
-}
-
-body::-webkit-scrollbar-track {
-  background: var(--sb-track-color);
-  border-radius: 12px;
-}
-
-body::-webkit-scrollbar-thumb {
-  background: var(--sb-thumb-color);
-  border-radius: 12px;
-  border: 2px solid #0f0f0f; /* subtle border for contrast */
-  transition: background 0.3s ease;
-}
-
-body::-webkit-scrollbar-thumb:hover {
-  background: #22d3ee; /* lighter cyan glow on hover */
-}
-
-@supports not selector(::-webkit-scrollbar) {
   body {
-    scrollbar-color: var(--sb-thumb-color) var(--sb-track-color);
+    @apply bg-desk font-sans text-ink antialiased;
+    /* the grey "desk" grid the page sits on */
+    background-image:
+      linear-gradient(rgba(255, 255, 255, 0.32) 1px, transparent 1px),
+      linear-gradient(90deg, rgba(255, 255, 255, 0.32) 1px, transparent 1px);
+    background-size: 64px 64px;
+    background-position: -1px -1px;
+  }
+
+  ::selection {
+    @apply bg-marker-yellow text-ink;
+  }
+
+  /* browser surfaces carry the design too */
+  html {
+    scrollbar-color: #1a1a1a #8b8b8b;
+    accent-color: #2f55d4;
+  }
+  input,
+  textarea {
+    caret-color: #2f55d4;
+  }
+  a {
+    text-underline-offset: 4px;
+  }
+  p {
+    text-wrap: pretty;
+  }
+
+  :focus-visible {
+    outline: 2px solid #2f55d4;
+    outline-offset: 3px;
   }
 }
 
-@font-face {
-  font-family: 'Mangolaine';
-  src: url('/fonts/Mangolaine.ttf') format('truetype');
-  font-weight: normal;
-  font-style: normal;
+@layer components {
+  /* lined notebook paper */
+  .paper {
+    @apply bg-paper;
+    background-image: linear-gradient(
+      to bottom,
+      transparent 31px,
+      theme("colors.rule") 31px,
+      theme("colors.rule") 32px
+    );
+    background-size: 100% 32px;
+  }
+
+  .mono-label {
+    @apply font-mono text-[11px] font-bold uppercase tracking-[0.14em];
+  }
 }
 
-.mangolaine {
-  font-family: 'Mangolaine', sans-serif;
-  letter-spacing: 1px;
+@media (prefers-reduced-motion: reduce) {
+  /* keep state feedback (colour, opacity, focus) but drop looping and decorative motion;
+     framer-motion page/step transitions are handled by <MotionConfig reducedMotion="user"> */
+  html {
+    scroll-behavior: auto;
+  }
+  *,
+  *::before,
+  *::after {
+    animation: none !important;
+  }
 }
-
-

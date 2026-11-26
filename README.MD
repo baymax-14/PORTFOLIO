@@ -1,54 +1,43 @@
-# 🌐 Personal Portfolio — Anand Rathod
+# Anand Rathod: Portfolio
 
-Hey there! 👋  
-Welcome to my personal portfolio — a modern, responsive website built to showcase my work, skills, and everything I’m passionate about as a developer.  
+My personal site: a scrapbook on notebook paper, with sticky notes, taped polaroids and pixel lettering.
+Live at **[portfolio-anandrathod.vercel.app](https://portfolio-anandrathod.vercel.app/)**.
 
-This site isn’t just a project; it’s *me* on the web — designed, built, and fine-tuned to reflect my style, creativity, and attention to detail.  
+## Pages
 
----
+| Route | What's there |
+|---|---|
+| `/` | Hero, short bio with skills, stacking project folders, "built with", Let's Talk |
+| `/about` | Bio, full skills board, journey timeline, resume |
+| `/work` | Featured projects + side quests |
+| `/work/:slug` | Case studies: problem, what I built, how it works, real numbers |
+| `/playground` | Draggable photo collage with zoom and a lightbox |
+| `/contact` | Three-step sticky-note form (Formspree) |
 
-## 🚀 Features
+## Stack
 
-✨ **Modern UI/UX** — Sleek dark theme, smooth animations, and responsive design.  
-⚡ **React + TailwindCSS** — Fast, clean, and optimized front-end stack.  
-🎞️ **Scroll & Motion Effects** — Powered by *Framer Motion* and custom GSAP interactions.  
-📬 **Contact Form Integration** — Formspree-powered contact form that sends messages directly to my inbox.  
-💼 **Projects Section** — Showcases my work with hover effects and expandable cards.  
-🎨 **Custom Components** — From smooth section transitions to a glowing expertise grid — everything’s handcrafted.  
+React 18 · Vite 5 · Tailwind CSS 3 · React Router 7 · Framer Motion (LazyMotion) · React Icons · Formspree · Vercel
 
----
+## Editing content
 
-## 🧠 Tech Stack
+All copy lives in `src/data/`, so text changes never touch layout code:
 
-- **Frontend:** React, Vite  
-- **Styling:** Tailwind CSS  
-- **Animations:** Framer Motion, GSAP  
-- **Icons:** React Icons  
-- **Form Handling:** Formspree  
-- **Deployment:** Vercel  
+- `profile.js`: name, role, tagline, email, socials, resume link, photos
+- `projects.js`: featured projects, case studies, side quests
+- `skills.js`: home skill chips, About skills board, "built with" strip
+- `journey.js`: About timeline
+- `playground.js`: collage items and their positions
 
----
+Images go in `public/images/` as WebP (`projects/` for screenshots). Full-size originals are kept in `originals/` and are not deployed.
 
-## 💡 About This Project
+## Run it
 
-This portfolio started as a simple idea — to create a space that truly feels like *me*.  
-Over time, it evolved into a fully animated, interactive web experience that highlights my projects and skills in a clean, minimal way.  
+```bash
+npm install
+npm run dev      # http://localhost:5173
+npm run build    # production build in dist/
+```
 
-Every component is built with a focus on usability and visual rhythm, from the scroll-based transitions to the subtle color gradients that bring it to life.  
+## Contact
 
----
-
-## 📫 Contact Me
-
-If you’d like to chat, collaborate, or just say hi — I’d love to hear from you!  
-
-📧 **Email:** [anand2005rathod@gmail.com](mailto:anand2005rathod@gmail.com)  
-💼 **LinkedIn:** [linkedin.com/in/anand-rathod-b95b14290](https://www.linkedin.com/in/anand-rathod-b95b14290/)  
-🐙 **GitHub:** [github.com/baymax-14](https://github.com/baymax-14)  
-💻 **Freelancer:** [freelancer.in/u/anandrathod31](https://www.freelancer.in)
-
----
-
-## 🖤 Acknowledgements
-
-This portfolio was built with a lot of late-night coffee ☕, countless lines of code, and inspiration from the amazing web developer community.  
+[LinkedIn](https://www.linkedin.com/in/anand-rathod-b95b14290/) · [GitHub](https://github.com/baymax-14) · anand2005rathod@gmail.com
