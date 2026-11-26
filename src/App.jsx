@@ -14,8 +14,13 @@ const NotFound = lazy(() => import("./pages/NotFound"));
 
 // warm the other pages once the browser is idle, so navigation never waits
 if (typeof window !== "undefined") {
-  const warm = () =>
-    ["About", "Work", "CaseStudy", "Playground", "Contact"].forEach((p) => import(`./pages/${p}.jsx`));
+  const warm = () => {
+    import("./pages/About");
+    import("./pages/Work");
+    import("./pages/CaseStudy");
+    import("./pages/Playground");
+    import("./pages/Contact");
+  };
   (window.requestIdleCallback || ((cb) => setTimeout(cb, 1500)))(warm);
 }
 
