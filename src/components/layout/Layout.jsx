@@ -3,6 +3,7 @@ import { useLocation, useOutlet } from "react-router-dom";
 import { AnimatePresence, m } from "framer-motion";
 import Navbar from "./Navbar";
 import Footer from "./Footer";
+import HandCursor from "./HandCursor";
 import { scrollToTop, useSmoothScroll } from "../../lib/smoothScroll";
 
 const TITLES = {
@@ -74,6 +75,7 @@ export default function Layout() {
         </AnimatePresence>
         <Footer />
       </div>
+      <HandCursor />
     </div>
   );
 }
