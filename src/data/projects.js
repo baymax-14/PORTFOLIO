@@ -41,7 +41,7 @@ export const projects = [
   {
     slug: "hirehub",
     title: "HireHub",
-    date: "Oct 2026",
+    date: "Sep 2026",
     pitch: "A job portal whose AI reads every resume and scores it out of 100.",
     folder: "yellow",
     stack: ["React", "Node.js", "Express", "MongoDB", "Gemini API"],
@@ -80,7 +80,7 @@ export const projects = [
   {
     slug: "edupredict",
     title: "EduPredict",
-    date: "Aug 2026",
+    date: "Mar 2026",
     pitch: "Spots students at risk early, and explains why.",
     folder: "blue",
     stack: ["React", "Chart.js", "Flask", "scikit-learn", "XGBoost"],

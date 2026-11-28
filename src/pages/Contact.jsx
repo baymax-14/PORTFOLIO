@@ -86,11 +86,10 @@ export default function Contact() {
         </div>
 
         <Polaroid
-          src="/images/projects/hirehub.webp"
-          alt="HireHub home page"
-          caption="latest build: HireHub"
+          src="/images/dev-quote.webp"
+          alt="Green terminal text on black: I can fix the world but they won't give me the source code"
+          caption="words to debug by"
           rotate={5}
-          imgClassName="object-left-top"
           className="order-3 mx-auto hidden w-48 sm:block lg:order-none lg:mt-10 lg:w-52"
         />
       </div>

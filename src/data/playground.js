@@ -12,6 +12,6 @@ export const playItems = [
   { id: "portfolio-v1", kind: "photo", src: "/images/projects/portfolio-v1.webp", caption: "portfolio v1: the dark era", x: 380, y: 400, w: 300, aspect: "16/10", rotate: -3 },
   { id: "hirehub", kind: "photo", src: "/images/projects/hirehub.webp", caption: "HireHub, live on Vercel", x: 760, y: 280, w: 300, aspect: "16/10", rotate: -4 },
   { id: "smiley", kind: "sticker", x: 690, y: 330, rotate: -10 },
-  { id: "edupredict", kind: "photo", src: "/images/projects/edupredict.webp", caption: "EduPredict says log in first", x: 790, y: 500, w: 250, aspect: "16/10", rotate: 6 },
+  { id: "edupredict", kind: "photo", src: "/images/projects/edupredict.webp", caption: "EduPredict calls it: 90%", x: 790, y: 500, w: 250, aspect: "16/10", rotate: 6 },
   { id: "hint", kind: "note", text: "psst: everything here is draggable. click a photo to see it big.", color: "yellow", x: 470, y: 620, w: 230, rotate: -2 },
 ];
