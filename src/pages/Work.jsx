@@ -33,7 +33,8 @@ export default function Work() {
           <PixelHeading as="h2" id="small-builds" className="text-5xl sm:text-7xl">
             Side Quests
           </PixelHeading>
-          <MarginNote>and some smaller things</MarginNote>
+          {/* phones: the note is wider than the heading, so anchor it left instead of right */}
+          <MarginNote className="max-sm:left-2 max-sm:right-auto">and some smaller things</MarginNote>
         </div>
         <ul className="mt-10 grid gap-8 sm:grid-cols-2 lg:grid-cols-3">
           {smallBuilds.map((b, i) => (

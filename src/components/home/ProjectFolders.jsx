@@ -53,9 +53,11 @@ function Folder({ project: p, index }) {
 
   return (
     <li
-      // folders stick and stack while scrolling (md+), each leaving its tab peeking out
-      className="relative mb-6 md:sticky md:mb-0 md:pb-10"
-      style={{ top: `${STICK_TOP + index * TAB_HEIGHT}px`, zIndex: index + 1 }}
+      // folders stick and stack while scrolling, each leaving its tab peeking out. Only on wide
+      // screens tall enough to show a whole folder; otherwise the next one would slide over its links.
+      // The offset is applied only with sticky: on a relative li, `top` would shift it down instead.
+      className="relative mb-6 md:mb-0 md:pb-10 [@media(min-width:768px)_and_(min-height:600px)]:sticky [@media(min-width:768px)_and_(min-height:600px)]:top-[var(--stick)]"
+      style={{ "--stick": `${STICK_TOP + index * TAB_HEIGHT}px`, zIndex: index + 1 }}
     >
       <div
         className={cn("relative flex items-center gap-2 pl-5 pr-10", t.body)}

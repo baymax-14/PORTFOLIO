@@ -160,7 +160,7 @@ function Bio() {
             alt="Anand's desk: a laptop and a monitor with code open, and a glowing orange keyboard"
             caption="where the code happens"
             rotate={-5}
-            className="-mt-4 ml-8 hidden w-40 md:block"
+            className="ml-8 mt-8 hidden w-40 md:block"
           />
         </div>
       </div>
